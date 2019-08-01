@@ -1,0 +1,15 @@
+include ../partials/head
+body
+  .wrapper
+    .sample
+      input(type="text", name="text", @input="firstName = $event.target.value" v-bind:value="firstName")
+      input(type="text", name="text", @input="lastName = $event.target.value" v-bind:value="lastName") 
+      //v-else nad v-else should locate near v-if
+      h2.if(v-if="showName") Yo, {{fullName}}
+      p(v-else) Element is hidden
+        
+      .btn-container
+        //@click short write of v-on:click
+        button(@click="showName = !showName").show-text-btn Show Text
+        
+include ../partials/foot

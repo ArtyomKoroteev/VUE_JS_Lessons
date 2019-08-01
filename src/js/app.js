@@ -1,4 +1,5 @@
 import lessonOneVUE from './modules/lessonFirstVUE';
+import discountApp from './modules/discountApp';
 
 // You can write a call and import your functions in this file.
 //
@@ -6,3 +7,4 @@ import lessonOneVUE from './modules/lessonFirstVUE';
 // Feel free with using ES6 here.
 
 lessonOneVUE.init();
+discountApp.init();
