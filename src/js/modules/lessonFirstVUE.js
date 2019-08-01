@@ -24,7 +24,6 @@ const lessonOneVUE = (() => {
       },
       computed: {
         fullName() {
-          console.log('text'); 
           return `${this.firstName} ${this.lastName}`;
         },
       },
@@ -42,7 +41,6 @@ const lessonOneVUE = (() => {
   };
 
   const init = () => {
-
     vueInit();
   };
   return {

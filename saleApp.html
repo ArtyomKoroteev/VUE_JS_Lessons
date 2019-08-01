@@ -1,21 +1,23 @@
-
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vue.js lessons</title>
-  <link media="all" rel="stylesheet" href="assets/css/vendor.min.css"/>
-  <link media="all" rel="stylesheet" href="assets/css/style.min.css"/>
-</head>
-<body>
-  <div class="wrapper">
-    <div class="discount-app-container">
-      <input type="text" name="text" v-model="discountCode"/>
-      <div class="btn-container">
-        <button class="show-text-btn" @click="sale">Show discount</button>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js lessons</title>
+    <link media="all" rel="stylesheet" href="assets/css/vendor.min.css">
+    <link media="all" rel="stylesheet" href="assets/css/style.min.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="discount-app-container">
+        <input type="text" name="text" v-model.lazy="discountCode">
+        <div class="btn-container">
+          <button class="show-text-btn" @click="sale">Show discount</button>
+        </div>
+        <h2>Your discount: {{saleNumber}}</h2>
       </div>
-      <h2>Your discount: {{saleNumber}}</h2>
     </div>
-  </div>
-</body>
-<script src="assets/js/vendor.min.js" defer=""></script>
-<script src="assets/js/app.js" defer=""></script>
+  </body>
+  <script src="assets/js/vendor.min.js" defer=""></script>
+  <script src="assets/js/app.js" defer=""></script>
+</html>

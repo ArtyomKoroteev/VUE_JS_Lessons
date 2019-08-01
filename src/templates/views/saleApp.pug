@@ -1,10 +1,12 @@
-include ../partials/head
-body
-  .wrapper
-    .discount-app-container
-      input(type="text", name="text", v-model="discountCode")
-      .btn-container
-        button(@click="sale").show-text-btn Show discount
-      h2 Your discount: {{saleNumber}}
+doctype html
+html(lang='en')
+  include ../partials/head
+  body
+    .wrapper
+      .discount-app-container
+        input(type = "text", name = "text", v-model.lazy = "discountCode")
+        .btn-container
+          button(@click = "sale").show-text-btn Show discount
+        h2 Your discount: {{saleNumber}}
         
-include ../partials/foot
+  include ../partials/foot
