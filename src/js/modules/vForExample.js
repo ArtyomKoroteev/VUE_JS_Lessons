@@ -1,28 +1,36 @@
 /* eslint-disable no-undef */
 // import Vue from 'vue';
 
-const discountApp = (() => {
-  const codes = {
-    'new year': 10,
-    happy: 20,
-    man: 5,
-    woman: 5,
-  };
-  const _getDiscount = function (discount) {
-    const sale = codes[discount] !== undefined ? codes[discount] : 0;
-    return sale;
-  };
+const vForExample = (() => {
 
   const vueInit = () => {
     const app = new Vue({
-      el: '.discount-app-container',
+      el: '.v-for-test',
       data: {
-        discountCode: '',
-        saleNumber: '',
+        numbers: [5, 1, 2],
+        info: {
+          name: 'John',
+          email: 'test@mail.com',
+          tel: '+380963454982',
+        },
       },
       methods: {
-        sale() {
-          this.saleNumber = `${_getDiscount(this.discountCode)}%`;
+        addNumber() {
+          this.numbers.push(Math.floor(Math.random() * 10));
+        },
+        sortNumbers() {
+          this.numbers.sort();
+        },
+        mouseEnter(e, i) {
+          if (i % 2 === 0) {
+            e.target.style.color = 'red';
+          }
+        },
+
+        mouseLeave(e, i) {
+          if (i % 2 !== 0) {
+            e.target.style.color = 'green';
+          }
         },
       },
     });
@@ -36,4 +44,4 @@ const discountApp = (() => {
   };
 })();
 
-export default discountApp;
+export default vForExample;
