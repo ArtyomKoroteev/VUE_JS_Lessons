@@ -17,13 +17,19 @@ const formDZ = (() => {
           lastName: '',
           email: '',
           telephone: '',
-        }, 
+        },
+        guestHolder: [],
       },
       methods: {
         toggleGuest() {
           formValidation();
           this.showGuest = !this.showGuest;
         },
+        addGuest() {
+          this.guestHolder.push(this.guestInfo);
+          console.log(this.guestHolder);
+          
+        }
       },
       computed: {
 

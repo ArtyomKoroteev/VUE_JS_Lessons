@@ -31,13 +31,10 @@
             <button type="submit">Send data</button>
           </div>
         </form>
-        <button class="add-btn" @click="toggleGuest">+ Add Guest</button>
-        <table v-if="showGuest">
+        <button class="add-btn" @click="addGuest">+ Add Guest</button>
+        <table>
           <tr>
-            <th v-for="value, key, index in guestInfo">{{key}}</th>
-          </tr>
-          <tr>
-            <td v-for="value in guestInfo">{{value}}</td>
+            <td v-for="value, key in guestHolder">{{value}}</td>
           </tr>
         </table>
       </div>

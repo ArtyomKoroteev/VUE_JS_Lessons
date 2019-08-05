@@ -19,10 +19,8 @@ html(lang='en')
             input(type="tel", name="tel" id="telephone" v-model.lazy="guestInfo.telephone")
           .btn-container
             button(type="submit") Send data
-        button(@click="toggleGuest").add-btn + Add Guest
-        table(v-if="showGuest")
+        button(@click="addGuest").add-btn + Add Guest
+        table
           tr
-            th(v-for="value, key, index in guestInfo") {{key}}
-          tr
-            td(v-for="value in guestInfo") {{value}}
+            td(v-for="value, key in guestHolder") {{value}}
     include ../partials/foot
