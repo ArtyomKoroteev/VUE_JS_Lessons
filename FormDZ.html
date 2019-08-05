@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js lessons</title>
+    <link media="all" rel="stylesheet" href="assets/css/vendor.min.css">
+    <link media="all" rel="stylesheet" href="assets/css/style.min.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="guest-form">
+        <form class="invitation-form" action="#">
+          <div class="input-wrapper">
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" id="firstName" v-model.lazy="guestInfo.firstName">
+          </div>
+          <div class="input-wrapper">
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" id="lastName" v-model.lazy="guestInfo.lastName">
+          </div>
+          <div class="input-wrapper">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" v-model.lazy="guestInfo.email">
+          </div>
+          <div class="input-wrapper">
+            <label for="telephone">Telephone Number</label>
+            <input type="tel" name="tel" id="telephone" v-model.lazy="guestInfo.telephone">
+          </div>
+          <div class="btn-container">
+            <button type="submit">Send data</button>
+          </div>
+        </form>
+        <button class="add-btn" @click="toggleGuest">+ Add Guest</button>
+        <table v-if="showGuest">
+          <tr>
+            <th v-for="value, key, index in guestInfo">{{key}}</th>
+          </tr>
+          <tr>
+            <td v-for="value in guestInfo">{{value}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <script src="assets/js/vendor.min.js" defer=""></script>
+    <script src="assets/js/app.js" defer=""></script>
+  </body>
+</html>
