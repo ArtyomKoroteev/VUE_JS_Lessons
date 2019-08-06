@@ -19,7 +19,21 @@ const userForm = (() => {
           this.users.push(this.user);
           this.user = {};
           this.showTable = true;
+          this.addUsersToLocalStorage();
         },
+        addUsersToLocalStorage() {
+          localStorage.setItem('storage', JSON.stringify(this.users))
+        },
+        loadUsersFromLocalStorage() {
+          const userStorage = JSON.parse(localStorage.getItem('storage'));
+          if (userStorage !== null) {
+            this.showTable = true;
+            this.users = userStorage;
+          }
+        },
+      },
+      created() {
+        this.loadUsersFromLocalStorage();
       },
     });
   };

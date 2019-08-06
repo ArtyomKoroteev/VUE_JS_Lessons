@@ -27,8 +27,6 @@ const formDZ = (() => {
         },
         addGuest() {
           this.guestHolder.push(this.guestInfo);
-          console.log(this.guestHolder);
-          
         }
       },
       computed: {
