@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js lessons</title>
+    <link media="all" rel="stylesheet" href="assets/css/vendor.min.css">
+    <link media="all" rel="stylesheet" href="assets/css/style.min.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="user-form">
+        <form class="invitation-form" action="#">
+          <div class="input-wrapper">
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" id="firstName" v-model.lazy="user.firstName">
+          </div>
+          <div class="input-wrapper">
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" id="lastName" v-model.lazy="user.lastName">
+          </div>
+          <div class="input-wrapper">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" v-model.lazy="user.email">
+          </div>
+          <div class="input-wrapper">
+            <label for="age">Age</label>
+            <input type="text" name="age" id="age" v-model.lazy="user.age">
+          </div>
+          <div class="input-wrapper">
+            <label for="skype">Skype</label>
+            <input type="text" name="skype" id="skype" v-model.lazy="user.skype">
+          </div>
+        </form>
+        <button class="add-btn" @click="addUser">+ Add User</button>
+        <table v-if="showTable">
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Skype</th>
+          </tr>
+          <tr></tr>
+          <tr v-for="(user) in users">
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.skype}}</td>
+          </tr>
+          <tr></tr>
+        </table>
+      </div>
+    </div>
+    <script src="assets/js/vendor.min.js" defer=""></script>
+    <script src="assets/js/app.js" defer=""></script>
+  </body>
+</html>

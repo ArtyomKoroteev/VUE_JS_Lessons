@@ -2,6 +2,7 @@ import lessonOneVUE from './modules/lessonFirstVUE';
 import discountApp from './modules/discountApp';
 import vForExample from './modules/vForExample';
 import formDZ from './modules/formDZ';
+import userForm from './modules/task-1';
 
 // You can write a call and import your functions in this file.
 //
@@ -12,3 +13,4 @@ lessonOneVUE.init();
 discountApp.init();
 vForExample.init();
 formDZ.init();
+userForm.init();

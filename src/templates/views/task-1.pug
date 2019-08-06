@@ -1,0 +1,39 @@
+doctype html
+html(lang='en')
+  include ../partials/head
+  body
+    .wrapper
+      .user-form
+        form.invitation-form(action="#")
+          .input-wrapper
+            label(for="firstName") First Name
+            input(type="text" name="firstName" id="firstName" v-model.lazy="user.firstName")
+          .input-wrapper
+            label(for="lastName") Last Name
+            input(type="text" name="lastName" id="lastName" v-model.lazy="user.lastName")
+          .input-wrapper
+            label(for="email") Email
+            input(type="email", name="email" id="email" v-model.lazy="user.email")
+          .input-wrapper
+            label(for="age") Age
+            input(type="text", name="age" id="age" v-model.lazy="user.age")
+          .input-wrapper
+            label(for="skype") Skype
+            input(type="text", name="skype" id="skype" v-model.lazy="user.skype")
+        button(@click="addUser").add-btn + Add User
+        table(v-if="showTable")
+          tr
+            th First Name
+            th Last Name
+            th Email
+            th Age
+            th Skype
+          tr
+          tr(v-for="(user) in users")
+            td {{user.firstName}}
+            td {{user.lastName}}
+            td {{user.email}}
+            td {{user.age}}
+            td {{user.skype}}
+          tr
+    include ../partials/foot
