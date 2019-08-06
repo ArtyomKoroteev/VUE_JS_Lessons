@@ -1,0 +1,19 @@
+.guest-form {
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .add-btn {
+    background: rgb(46, 194, 243);
+    border: none;
+    color: $white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 30px;
+    border-radius: 15px;
+
+    &:hover {
+      background: darken(rgb(46, 194, 243), 15%)
+    }
+  }
+}

@@ -1,0 +1,18 @@
+doctype html
+html(lang='en')
+  include ../partials/head
+  body
+    .wrapper
+      .v-for-test
+        ul
+          //- @mouseenter="$event.target.style.color = 'red'" 
+          //- @mouseleave="$event.target.style.color = 'black'"
+          li(v-for="index, number in numbers" 
+             @mouseenter="mouseEnter($event, index)"
+             @mouseleave="mouseLeave($event, index)") {{index}} - {{number}}
+        button(@click="addNumber") add number
+        button(@click="sortNumbers") sortNumbers
+        ul
+          li(v-for="value, key, index in info") {{index}} - {{key}} : {{value}} 
+          
+  include ../partials/foot

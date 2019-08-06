@@ -1,0 +1,26 @@
+doctype html
+html(lang='en')
+  include ../partials/head
+  body
+    .wrapper
+      .guest-form
+        form.invitation-form(action="#")
+          .input-wrapper
+            label(for="firstName") First Name
+            input(type="text" name="firstName" id="firstName" v-model.lazy="guestInfo.firstName")
+          .input-wrapper
+            label(for="lastName") Last Name
+            input(type="text" name="lastName" id="lastName" v-model.lazy="guestInfo.lastName")
+          .input-wrapper
+            label(for="email") Email
+            input(type="email", name="email" id="email" v-model.lazy="guestInfo.email")
+          .input-wrapper
+            label(for="telephone") Telephone Number
+            input(type="tel", name="tel" id="telephone" v-model.lazy="guestInfo.telephone")
+          .btn-container
+            button(type="submit") Send data
+        button(@click="addGuest").add-btn + Add Guest
+        table
+          tr
+            td(v-for="value, key in guestHolder") {{value}}
+    include ../partials/foot

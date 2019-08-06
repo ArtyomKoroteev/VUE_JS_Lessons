@@ -2,7 +2,17 @@ doctype html
 html(lang='en')
   include ../partials/head
   body
-    .sample
-      input(type="text", name="text")
-      h2 {{message}}
+    .wrapper
+      .sample
+        input(type="text", v-on:input="message=$event.target.value", name="text", v-bind:value="message") 
+        //v-else nad v-else should locate near v-if
+        h2.if(v-if="showName") Yo, {{message}}
+        p(v-else) Element is hidden
+        h2.show(v-show="showName") Yo, {{message}}
+        
+        .btn-container
+          //@click short write of v-on:click
+          button(@click="showName = !showName").show-text-btn Show Text
+          button(v-on:click="toggleName()").show-text-btn Show Text Function
+        
     include ../partials/foot
