@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-const userForm = (() => {
-  const userFormContainer = document.querySelector('.user-form');
+const twoStepsForm = (() => {
+  const twoStepsFormContainer = document.querySelector('.two-steps-form');
   
   Vue.use(VeeValidate, {
     events: 'change|blur',
@@ -8,7 +8,7 @@ const userForm = (() => {
   
   const vueInit = () => {
     const formApp = new Vue({
-      el: userFormContainer,
+      el: twoStepsFormContainer,
       data: {
         user: {
           firstName: '',
@@ -16,9 +16,14 @@ const userForm = (() => {
           email: '',
           age: '',
           skype: '',
+          hobbies: '',
+          telephone: '',
+          nickname: '',
         },
         users: [],
         showTable: false,
+        showForm1: true,
+        showForm2: false,
       },
       methods: {
         addUser() {
@@ -28,23 +33,31 @@ const userForm = (() => {
           this.addUsersToLocalStorage();
         },
         addUsersToLocalStorage() {
-          localStorage.setItem('storage', JSON.stringify(this.users));
+          localStorage.setItem('twoStepsFormStorage', JSON.stringify(this.users));
         },
         loadUsersFromLocalStorage() {
-          const userStorage = JSON.parse(localStorage.getItem('storage'));
+          const userStorage = JSON.parse(localStorage.getItem('twoStepsFormStorage'));
           if (userStorage !== null) {
             this.showTable = true;
             this.users = userStorage;
           }
         },
-        validateBeforeSubmit() {
-          this.$validator.validateAll().then((result) => {
+        validateBeforeSubmit(scope) {
+          this.$validator.validateAll(scope).then((result) => {
+            console.log(scope);
+                     
             if (result) {
-              this.addUser();
-              return;
+              if (scope === 'form-1') {
+                this.showForm1 = false;
+                this.showForm2 = true;
+              } else if (scope === 'form-2') {
+                this.showForm1 = true;
+                this.showForm2 = false;
+                // this.addUser();
+              }
             }
             // eslint-disable-next-line no-alert
-            alert('Correct errors!');
+            // alert('Correct errors!');
           });
         },
       },
@@ -61,4 +74,4 @@ const userForm = (() => {
   };
 })();
 
-export default userForm;
+export default twoStepsForm;

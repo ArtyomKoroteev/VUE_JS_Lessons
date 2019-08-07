@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js lessons</title>
+    <link media="all" rel="stylesheet" href="assets/css/vendor.min.css">
+    <link media="all" rel="stylesheet" href="assets/css/style.min.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="two-steps-form">
+        <form @submit.prevent="validateBeforeSubmit('form-1')" data-vv-scope="form-1" v-show="showForm1">
+          <legend class="step">Step 1 &rarr;</legend>
+          <div class="input-wrapper">
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" placeholder="First Name" id="firstName" v-validate="'required|min:4'" data-vv-as="first name" v-model.lazy="user.firstName"><span class="error">{{errors.first('form-1.firstName')}}</span>
+          </div>
+          <div class="input-wrapper">
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" placeholder="Last Name" id="lastName" v-validate="'required|min:4'" data-vv-as="last name" v-model.lazy="user.lastName"><span class="error">{{errors.first('form-1.lastName')}}</span>
+          </div>
+          <div class="input-wrapper">
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="Email" id="email" v-validate="'required|email'" v-model.lazy="user.email"><span class="error">{{errors.first('form-1.email')}}</span>
+          </div>
+          <div class="input-wrapper">
+            <label for="age">Age</label>
+            <input type="text" name="age" id="age" placeholder="Age" v-validate="'numeric|max_value:120'" v-model.lazy="user.age"><span class="error">{{errors.first('form-1.age')}}</span>
+          </div>
+          <div class="input-wrapper">
+            <label for="skype">Skype</label>
+            <input type="text" name="skype" placeholder="Skype" id="skype" v-validate="'min:4'" v-model.lazy="user.skype"><span class="error">{{errors.first('form-1.skype')}}</span>
+          </div>
+          <div class="btn-container">
+            <button class="next">Next</button>
+          </div>
+        </form>
+        <form class="invitation-form" @submit.prevent="validateBeforeSubmit('form-2')" v-show="showForm2" data-vv-scope="form-2">
+          <legend class="step">Step 2 </legend>
+          <div class="input-wrapper">
+            <label for="hobbies">Your Hobbies</label>
+            <input type="text" name="hobbies" placeholder="Your Hobbies" id="hobbies" data-vv-as="your hobbies" v-model.lazy="user.hobbies"><span class="error">{{errors.first('form-2.hobbies')}}</span>
+          </div>
+          <div class="input-wrapper">
+            <label for="telephone">Telephone</label>
+            <input type="tel" name="telephone" placeholder="Telephone" id="telephone" v-validate="'required'" data-vv-as="telephone" v-model.lazy="user.telephone"><span class="error">{{errors.first('form-2.telephone')}}</span>
+          </div>
+          <div class="input-wrapper">
+            <label for="nickname">Nickname</label>
+            <input type="text" name="nickname" placeholder="nickname" id="nickname" v-validate="'required'" v-model.lazy="user.nickname"><span class="error">{{errors.first('form-2.nickname')}}</span>
+          </div>
+          <div class="btn-container">
+            <button class="prev">Back</button>
+            <button class="add-btn">+ Add User</button>
+          </div>
+        </form>
+        <table v-if="showTable">
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Skype</th>
+            <th>Hobbies</th>
+            <th>Telephone</th>
+            <th>Nickname</th>
+          </tr>
+          <tr></tr>
+          <tr v-for="(user) in users">
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.skype}}</td>
+            <td>{{user.hobbies}}</td>
+            <td>{{user.telephone}}</td>
+            <td>{{user.nickname}}</td>
+          </tr>
+          <tr></tr>
+        </table>
+      </div>
+    </div>
+    <script src="assets/js/vendor.min.js" defer=""></script>
+    <script src="assets/js/app.js" defer=""></script>
+  </body>
+</html>
