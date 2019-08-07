@@ -2,14 +2,10 @@
 
 const formDZ = (() => {
   const inputs = document.querySelectorAll('[type="text"], [type="email"], [type="tel"]');
-  
-  const formValidation = () => {
-    console.log(inputs);
-  };
-
+  const guestForm = document.querySelector('.guest-form');
   const vueInit = () => {
     const formApp = new Vue({
-      el: '.guest-form',
+      el: guestForm,
       data: {
         showGuest: false,
         guestInfo: {
@@ -22,12 +18,11 @@ const formDZ = (() => {
       },
       methods: {
         toggleGuest() {
-          formValidation();
           this.showGuest = !this.showGuest;
         },
         addGuest() {
           this.guestHolder.push(this.guestInfo);
-        }
+        },
       },
       computed: {
 

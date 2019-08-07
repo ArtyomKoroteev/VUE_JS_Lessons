@@ -2,12 +2,11 @@
 // import Vue from 'vue';
 
 const lessonOneVUE = (() => {
+  const sampleContainer = document.querySelector('.sample');
+  
   const vueInit = () => {
-    if (document.querySelector('.sample') === 0) {
-      return;
-    }
     const app = new Vue({
-      el: '.sample',
+      el: sampleContainer,
       data: {
         message: '',
         showName: true,

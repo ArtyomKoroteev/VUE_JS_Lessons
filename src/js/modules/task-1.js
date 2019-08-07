@@ -1,8 +1,15 @@
 /* eslint-disable no-undef */
 const userForm = (() => {
+  const userFormContainer = document.querySelector('.user-form');
+  const addBtn = document.querySelector('.add-btn');
+  Vue.use(VeeValidate, {
+    events: 'change|blur',
+    methods: {
+    },
+  });
   const vueInit = () => {
     const formApp = new Vue({
-      el: '.user-form',
+      el: userFormContainer,
       data: {
         user: {
           firstName: '',
@@ -22,7 +29,7 @@ const userForm = (() => {
           this.addUsersToLocalStorage();
         },
         addUsersToLocalStorage() {
-          localStorage.setItem('storage', JSON.stringify(this.users))
+          localStorage.setItem('storage', JSON.stringify(this.users));
         },
         loadUsersFromLocalStorage() {
           const userStorage = JSON.parse(localStorage.getItem('storage'));
@@ -30,6 +37,15 @@ const userForm = (() => {
             this.showTable = true;
             this.users = userStorage;
           }
+        },
+        validateBeforeSubmit() {
+          this.$validator.validateAll().then((result) => {
+            if (result) {
+              this.addUser();
+              return;
+            }
+            alert('Correct errors!');
+          });
         },
       },
       created() {
