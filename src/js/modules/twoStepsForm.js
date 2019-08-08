@@ -5,6 +5,15 @@ const twoStepsForm = (() => {
   Vue.use(VeeValidate, {
     events: 'change|blur',
   });
+
+  VeeValidate.Validator.extend('hobbies', {
+    getMessage(field) {
+      return 'The ' + field + ' value is not truthy.'
+    },
+    validate(value) {
+      return !! value
+    },
+  });
   
   const vueInit = () => {
     const formApp = new Vue({
