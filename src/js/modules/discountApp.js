@@ -2,6 +2,8 @@
 // import Vue from 'vue';
 
 const discountApp = (() => {
+  const discountAppContainer = document.querySelector('.discount-app-container');
+
   const codes = {
     'new year': 10,
     happy: 20,
@@ -15,7 +17,7 @@ const discountApp = (() => {
 
   const vueInit = () => {
     const app = new Vue({
-      el: '.discount-app-container',
+      el: discountAppContainer,
       data: {
         discountCode: '',
         saleNumber: '',
@@ -29,6 +31,9 @@ const discountApp = (() => {
   };
 
   const init = () => {
+    // if (discountAppContainer.length === 0) {
+    //   return;
+    // }
     vueInit();
   };
   return {

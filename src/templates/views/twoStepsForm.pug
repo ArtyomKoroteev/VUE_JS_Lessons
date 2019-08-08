@@ -1,0 +1,68 @@
+doctype html
+html(lang='en')
+  include ../partials/head
+  body
+    .wrapper
+      .two-steps-form
+        form(@submit.prevent="validateBeforeSubmit('form-1')" data-vv-scope="form-1" v-show="showForm1")
+          legend.step Step 1 &rarr;
+          .input-wrapper
+            label(for="firstName") First Name
+            input(type="text" name="firstName" placeholder="First Name" id="firstName" v-validate="'required|min:4'"  data-vv-as="first name" v-model.lazy="user.firstName")
+            span.error {{errors.first('form-1.firstName')}}
+          .input-wrapper
+            label(for="lastName") Last Name
+            input(type="text" name="lastName" placeholder="Last Name" id="lastName" v-validate="'required|min:4'" data-vv-as="last name" v-model.lazy="user.lastName")
+            span.error {{errors.first('form-1.lastName')}}
+          .input-wrapper
+            label(for="email") Email
+            input(type="email", name="email" placeholder="Email" id="email" v-validate="'required|email'" v-model.lazy="user.email")
+            span.error {{errors.first('form-1.email')}}
+          .input-wrapper
+            label(for="age") Age
+            input(type="text", name="age" id="age" placeholder="Age" v-validate="'numeric|max_value:120'" v-model.lazy="user.age")
+            span.error {{errors.first('form-1.age')}}
+          .input-wrapper
+            label(for="skype") Skype
+            input(type="text", name="skype" placeholder="Skype" id="skype" v-validate="'min:4'" v-model.lazy="user.skype")
+            span.error {{errors.first('form-1.skype')}}
+          .btn-container
+            button.next Next
+        form.invitation-form(@submit.prevent="validateBeforeSubmit('form-2')" data-vv-scope="form-2" v-show="showForm2")
+          legend.step Step 2 
+          .input-wrapper
+            label(for="hobbies") Your Hobbies
+            input(type="text" name="hobbies" placeholder="Your Hobbies" id="hobbies"  data-vv-as="your hobbies" v-model.lazy="user.hobbies")
+            span.error {{errors.first('form-2.hobbies')}}
+          .input-wrapper
+            label(for="telephone") Telephone
+            input(type="tel" name="telephone" placeholder="Telephone" id="telephone" v-validate="'required'" data-vv-as="telephone" v-model.lazy="user.telephone")
+            span.error {{errors.first('form-2.telephone')}}
+          .input-wrapper
+            label(for="nickname") Nickname
+            input(type="text", name="nickname" placeholder="Nickname" id="nickname" v-validate="'nickname'" data-vv-rules="nickname"  v-model.lazy="user.nickname")
+            span.error {{errors.first('form-2.nickname')}}
+          .btn-container
+            button.add-btn + Add User
+        table(v-if="showTable")
+          tr
+            th First Name
+            th Last Name
+            th Email
+            th Age
+            th Skype
+            th Hobbies
+            th Telephone
+            th Nickname
+          tr
+          tr(v-for="(user) in users")
+            td {{user.firstName}}
+            td {{user.lastName}}
+            td {{user.email}}
+            td {{user.age}}
+            td {{user.skype}}
+            td {{user.hobbies}}
+            td {{user.telephone}}
+            td {{user.nickname}}
+          tr
+    include ../partials/foot

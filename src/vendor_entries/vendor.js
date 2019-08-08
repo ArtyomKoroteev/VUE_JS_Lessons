@@ -5,4 +5,5 @@
 module.exports = [
   './node_modules/jquery/dist/jquery.js',
   './node_modules/vue/dist/vue.js',
+  './node_modules/vee-validate/dist/vee-validate.js',
 ];

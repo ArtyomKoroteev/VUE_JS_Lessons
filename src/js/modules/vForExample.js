@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
 // import Vue from 'vue';
-
 const vForExample = (() => {
-
+  const vForTestContainer = document.querySelector('.v-for-test');
+  
   const vueInit = () => {
     const app = new Vue({
-      el: '.v-for-test',
+      el: vForTestContainer,
       data: {
         numbers: [5, 1, 2],
         info: {

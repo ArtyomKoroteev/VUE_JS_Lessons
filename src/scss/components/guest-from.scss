@@ -1,7 +1,16 @@
-.guest-form {
+.guest-form, .user-form {
   .input-wrapper {
     display: flex;
     flex-direction: column;
+    position: relative;
+    padding-bottom: 15px;
+
+    .error {
+      color: red;
+      position: absolute;
+      bottom: 18px;
+      font-size: 14px;
+    }
   }
   .add-btn {
     background: rgb(46, 194, 243);
@@ -14,6 +23,27 @@
 
     &:hover {
       background: darken(rgb(46, 194, 243), 15%)
+    }
+  }
+
+  table {
+    border: 1px solid;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-width: 1px 0 0 1px;
+    table-layout: fixed;
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+
+    th {
+      border: 1px solid;
+      // border-color: rgba($gray, 1);
+    }
+
+    td {
+      border: 1px solid;
+      // border-color: rgba($gray, 1);
     }
   }
 }

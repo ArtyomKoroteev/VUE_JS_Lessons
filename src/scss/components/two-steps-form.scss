@@ -1,0 +1,89 @@
+.two-steps-form {
+  .step {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+
+  }
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 15px;
+
+    .error {
+      color: red;
+      position: absolute;
+      bottom: 18px;
+      font-size: 14px;
+    }
+  }
+
+  table {
+    border: 1px solid;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-width: 1px 0 0 1px;
+    table-layout: fixed;
+    text-align: center;
+    margin: 20px 0;
+
+    th {
+      border: 1px solid;
+    }
+
+    td {
+      border: 1px solid;
+      padding: 5px 10px;
+
+    }
+  }
+  .btn-container {
+    width: 100%;
+    display: flex;
+    .add-btn {
+      background: rgb(46, 194, 243);
+      border: none;
+      color: $white;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 5px 30px;
+      border-radius: 15px;
+      margin-left: auto;
+  
+      &:hover {
+        background: darken(rgb(46, 194, 243), 15%)
+      }
+    }
+    .next {
+      color: $white;
+      font-weight: bold;
+      background: #8bc53f;
+      border: none;
+      padding: 10px 25px;
+      max-width: 150px;
+      width: 100%;
+      border-radius: 25px;
+      margin-left: auto;
+
+      &:hover {
+        background: darken(#8bc53f, 5%);
+      }
+    }
+    .prev {
+      color: $white;
+      font-weight: bold;
+      background: #8bc53f;
+      border: none;
+      padding: 10px 25px;
+      max-width: 150px;
+      width: 100%;
+      border-radius: 25px;
+      margin-right: auto;
+
+      &:hover {
+        background: darken(#8bc53f, 5%);
+      }
+    }
+  }
+}

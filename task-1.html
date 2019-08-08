@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js lessons</title>
+    <link media="all" rel="stylesheet" href="assets/css/vendor.min.css">
+    <link media="all" rel="stylesheet" href="assets/css/style.min.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="user-form">
+        <form class="invitation-form" @submit.prevent="validateBeforeSubmit">
+          <div class="input-wrapper">
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" placeholder="First Name" id="firstName" v-validate="'required|min:4'" data-vv-as="first name" v-model.lazy="user.firstName"><span class="error">{{errors.first('firstName')}}</span>
+          </div>
+          <div class="input-wrapper">
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" placeholder="Last Name" id="lastName" v-validate="'required|min:4'" data-vv-as="last name" v-model.lazy="user.lastName"><span class="error">{{errors.first('lastName')}}</span>
+          </div>
+          <div class="input-wrapper">
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="Email" id="email" v-validate="'required|email'" v-model.lazy="user.email"><span class="error">{{errors.first('email')}}</span>
+          </div>
+          <div class="input-wrapper">
+            <label for="age">Age</label>
+            <input type="text" name="age" id="age" placeholder="Age" v-validate="'numeric|max_value:120'" v-model.lazy="user.age"><span class="error">{{errors.first('age')}}</span>
+          </div>
+          <div class="input-wrapper">
+            <label for="skype">Skype</label>
+            <input type="text" name="skype" placeholder="Skype" id="skype" v-validate="'min:4'" v-model.lazy="user.skype"><span class="error">{{errors.first('skype')}}</span>
+          </div>
+          <button class="add-btn" type="submit">+ Add User</button>
+        </form>
+        <table v-if="showTable">
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Skype</th>
+          </tr>
+          <tr></tr>
+          <tr v-for="(user) in users">
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.skype}}</td>
+          </tr>
+          <tr></tr>
+        </table>
+      </div>
+    </div>
+    <script src="assets/js/vendor.min.js" defer=""></script>
+    <script src="assets/js/app.js" defer=""></script>
+  </body>
+</html>
