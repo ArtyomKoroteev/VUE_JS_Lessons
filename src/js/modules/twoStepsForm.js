@@ -49,8 +49,7 @@ const twoStepsForm = (() => {
         },
         users: [],
         showTable: false,
-        showForm1: true,
-        showForm2: false,
+        step: 1,
       },
       methods: {
         addUser() {
@@ -76,12 +75,22 @@ const twoStepsForm = (() => {
             this.showTable = false;
           }
         },
+        stepPrev() {
+          this.step -= 1;
+        },
+        stepNext() {
+          this.step += 1;
+        },
         validateBeforeSubmit(scope) {
           this.$validator.validateAll(scope).then((result) => {
             if (result) {
               if (scope === 'form-1') {
                 this.showForm1 = false;
                 this.showForm2 = true;
+                this.stepNext();
+                setTimeout(() => {
+                  this.$validator.errors.clear();
+                }, 0);
               } else if (scope === 'form-2') {
                 this.showForm1 = true;
                 this.showForm2 = false;
