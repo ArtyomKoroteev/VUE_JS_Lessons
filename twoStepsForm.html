@@ -36,7 +36,7 @@
             <button class="next">Next</button>
           </div>
         </form>
-        <form class="invitation-form" @submit.prevent="validateBeforeSubmit('form-2')" v-show="showForm2" data-vv-scope="form-2">
+        <form class="invitation-form" @submit.prevent="validateBeforeSubmit('form-2')" data-vv-scope="form-2" v-show="showForm2">
           <legend class="step">Step 2 </legend>
           <div class="input-wrapper">
             <label for="hobbies">Your Hobbies</label>
@@ -48,10 +48,9 @@
           </div>
           <div class="input-wrapper">
             <label for="nickname">Nickname</label>
-            <input type="text" name="nickname" placeholder="nickname" id="nickname" v-validate="'required'" v-model.lazy="user.nickname"><span class="error">{{errors.first('form-2.nickname')}}</span>
+            <input type="text" name="nickname" placeholder="Nickname" id="nickname" v-validate="'nickname'" data-vv-rules="nickname" v-model.lazy="user.nickname"><span class="error">{{errors.first('form-2.nickname')}}</span>
           </div>
           <div class="btn-container">
-            <button class="prev">Back</button>
             <button class="add-btn">+ Add User</button>
           </div>
         </form>

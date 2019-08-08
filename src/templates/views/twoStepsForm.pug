@@ -28,7 +28,7 @@ html(lang='en')
             span.error {{errors.first('form-1.skype')}}
           .btn-container
             button.next Next
-        form.invitation-form(@submit.prevent="validateBeforeSubmit('form-2')" v-show="showForm2" data-vv-scope="form-2")
+        form.invitation-form(@submit.prevent="validateBeforeSubmit('form-2')" data-vv-scope="form-2" v-show="showForm2")
           legend.step Step 2 
           .input-wrapper
             label(for="hobbies") Your Hobbies
@@ -40,10 +40,9 @@ html(lang='en')
             span.error {{errors.first('form-2.telephone')}}
           .input-wrapper
             label(for="nickname") Nickname
-            input(type="text", name="nickname" placeholder="nickname" id="nickname" v-validate="'required'" v-model.lazy="user.nickname")
+            input(type="text", name="nickname" placeholder="Nickname" id="nickname" v-validate="'nickname'" data-vv-rules="nickname"  v-model.lazy="user.nickname")
             span.error {{errors.first('form-2.nickname')}}
           .btn-container
-            button.prev Back
             button.add-btn + Add User
         table(v-if="showTable")
           tr

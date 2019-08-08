@@ -1,20 +1,33 @@
 /* eslint-disable no-undef */
 const twoStepsForm = (() => {
   const twoStepsFormContainer = document.querySelector('.two-steps-form');
-  
+
+  VeeValidate.Validator.extend('nickname', {
+    getMessage(field, params, data) {
+      return `${data.message}`;
+    },
+    validate(value) {
+      return new Promise((resolve) => {
+        if (value === 'god' || value === 'devil' || value === 'president') {
+          resolve({
+            valid: false,
+            data: {
+              message: 'You cannot choose nickname: "god", "devil" or "president"',
+            },
+          });
+        } else {
+          resolve({
+            valid: true,
+          });
+        }
+      });
+    },
+  });
+
   Vue.use(VeeValidate, {
     events: 'change|blur',
   });
 
-  VeeValidate.Validator.extend('hobbies', {
-    getMessage(field) {
-      return 'The ' + field + ' value is not truthy.'
-    },
-    validate(value) {
-      return !! value
-    },
-  });
-  
   const vueInit = () => {
     const formApp = new Vue({
       el: twoStepsFormContainer,
@@ -51,10 +64,11 @@ const twoStepsForm = (() => {
             this.users = userStorage;
           }
         },
+        historyBack() {
+          window.history.back();
+        },
         validateBeforeSubmit(scope) {
           this.$validator.validateAll(scope).then((result) => {
-            console.log(scope);
-                     
             if (result) {
               if (scope === 'form-1') {
                 this.showForm1 = false;
@@ -62,11 +76,12 @@ const twoStepsForm = (() => {
               } else if (scope === 'form-2') {
                 this.showForm1 = true;
                 this.showForm2 = false;
-                // this.addUser();
+                this.addUser();
+                setTimeout(() => {
+                  this.$validator.errors.clear();
+                }, 0);
               }
             }
-            // eslint-disable-next-line no-alert
-            // alert('Correct errors!');
           });
         },
       },
