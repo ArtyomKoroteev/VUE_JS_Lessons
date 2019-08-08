@@ -8,17 +8,22 @@ const twoStepsForm = (() => {
     },
     validate(value) {
       return new Promise((resolve) => {
-        if (value === 'god' || value === 'devil' || value === 'president') {
-          resolve({
-            valid: false,
-            data: {
-              message: 'You cannot choose nickname: "god", "devil" or "president"',
-            },
-          });
-        } else {
-          resolve({
-            valid: true,
-          });
+        switch (value) {
+          case 'god':
+          case 'devil':
+          case 'president':
+            resolve({
+              valid: false,
+              data: {
+                message: 'You cannot choose nickname: "god", "devil" or "president"',
+              },
+            });
+            break;
+          default:
+            resolve({
+              valid: true,
+            });
+            break;
         }
       });
     },
@@ -64,8 +69,12 @@ const twoStepsForm = (() => {
             this.users = userStorage;
           }
         },
-        historyBack() {
-          window.history.back();
+        deleteUserFromLocalStorage(index) {
+          this.users.splice(index, 1);
+          this.addUsersToLocalStorage();
+          if (this.users.length === 0) {
+            this.showTable = false;
+          }
         },
         validateBeforeSubmit(scope) {
           this.$validator.validateAll(scope).then((result) => {

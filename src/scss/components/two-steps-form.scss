@@ -35,7 +35,19 @@
     td {
       border: 1px solid;
       padding: 5px 10px;
+    }
 
+    .delete {
+      background: red;
+      color: white;
+      font-weight: bold;
+      border: none;
+      padding: 5px 15px;
+      border-radius: 15px;
+
+      &:hover {
+        background: darken(red, 10%);
+      }
     }
   }
   .btn-container {

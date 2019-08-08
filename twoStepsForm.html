@@ -64,9 +64,10 @@
             <th>Hobbies</th>
             <th>Telephone</th>
             <th>Nickname</th>
+            <th>Delete Element</th>
           </tr>
           <tr></tr>
-          <tr v-for="(user) in users">
+          <tr v-for="(user, index) in users">
             <td>{{user.firstName}}</td>
             <td>{{user.lastName}}</td>
             <td>{{user.email}}</td>
@@ -75,6 +76,9 @@
             <td>{{user.hobbies}}</td>
             <td>{{user.telephone}}</td>
             <td>{{user.nickname}}</td>
+            <td>
+              <button class="delete" @click="deleteUserFromLocalStorage(index)">Delete</button>
+            </td>
           </tr>
           <tr></tr>
         </table>
