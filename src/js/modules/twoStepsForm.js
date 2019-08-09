@@ -85,16 +85,13 @@ const twoStepsForm = (() => {
           this.$validator.validateAll(scope).then((result) => {
             if (result) {
               if (scope === 'form-1') {
-                this.showForm1 = false;
-                this.showForm2 = true;
                 this.stepNext();
                 setTimeout(() => {
                   this.$validator.errors.clear();
                 }, 0);
               } else if (scope === 'form-2') {
-                this.showForm1 = true;
-                this.showForm2 = false;
                 this.addUser();
+                this.stepPrev();
                 setTimeout(() => {
                   this.$validator.errors.clear();
                 }, 0);
