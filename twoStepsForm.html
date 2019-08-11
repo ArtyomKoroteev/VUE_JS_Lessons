@@ -44,7 +44,7 @@
           </div>
           <div class="input-wrapper">
             <label for="telephone">Telephone</label>
-            <input type="tel" name="telephone" placeholder="Telephone" id="telephone" v-validate="'required'" data-vv-as="telephone" v-model.lazy="user.telephone"><span class="error">{{errors.first('form-2.telephone')}}</span>
+            <input type="tel" name="telephone" placeholder="Telephone" id="telephone" v-validate="'required|numeric'" v-model.lazy="user.telephone"><span class="error">{{errors.first('form-2.telephone')}}</span>
           </div>
           <div class="input-wrapper">
             <label for="nickname">Nickname</label>

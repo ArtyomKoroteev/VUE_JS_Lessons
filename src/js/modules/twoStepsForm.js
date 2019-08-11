@@ -63,7 +63,7 @@ const twoStepsForm = (() => {
         },
         loadUsersFromLocalStorage() {
           const userStorage = JSON.parse(localStorage.getItem('twoStepsFormStorage'));
-          if (userStorage !== null) {
+          if (userStorage.length !== 0) {
             this.showTable = true;
             this.users = userStorage;
           }
