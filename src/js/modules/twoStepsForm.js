@@ -53,8 +53,14 @@ const twoStepsForm = (() => {
       },
       methods: {
         addUser() {
-          this.users.push(this.user);
-          this.user = {};
+          this.users.push(Object.assign({}, this.user));
+          // eslint-disable-next-line no-restricted-syntax
+          for (const key in this.user) {
+            if ({}.hasOwnProperty.call(this.user, key)) {
+              this.user[key] = '';
+            }
+          }
+          // this.user = {};
           this.showTable = true;
           this.addUsersToLocalStorage();
         },
